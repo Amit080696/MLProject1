@@ -12,8 +12,6 @@ def get_requirements(filepath:str)->List[str]:
         requirements = [req.replace('\n', '') for req in requirements]
     return requirements
 
-
-
 setup(
 name ='mlproject',
 version='0.0.1',
