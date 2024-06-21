@@ -1,0 +1,41 @@
+Install DVC:
+pip install dvc
+
+Initialize DVC:
+dvc init
+
+After initializing, you will notice several files and directories created by DVC, such as the .dvc folder and the .dvcignore file.
+
+Track DVC Files with Git:
+git add .
+git status
+
+You will see new files that have been created by DVC.
+
+Commit the Changes:
+git commit -m 'Initialize DVC'
+
+Handle Existing Data:
+If you have data already tracked by Git that you want to manage with DVC, you should either remove it from Git tracking or move it to a location outside your Git repository temporarily.
+
+For example, to remove a tracked file:
+
+git rm --cached <file>
+
+Add Data to DVC:
+To start tracking a data file with DVC, use the dvc add command:
+
+dvc add artifacts/raw.csv
+
+Track DVC Files with Git Again:
+After adding the data to DVC, new DVC-related files will be created. Track these files with Git:
+
+git add artifacts/raw.csv.dvc artifacts/.gitignore
+
+Commit the DVC Changes:
+
+git commit -m 'Track raw data with DVC'
+Make Changes to Your Data:
+If you make changes to the data, you need to add the updated data to DVC again. For example, if you add a new record to artifacts/raw.csv, run:
+
+dvc add artifacts/raw.csv

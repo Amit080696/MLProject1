@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/Learning/mlproject/mlruns/0/f96761a3bf7c4f6f9832c824d87d8f01/artifacts
+end_time: 1718990031466
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f96761a3bf7c4f6f9832c824d87d8f01
+run_name: able-kit-360
+run_uuid: f96761a3bf7c4f6f9832c824d87d8f01
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1718990029537
+status: 3
+tags: []
+user_id: amitbaghel

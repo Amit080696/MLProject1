@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/Learning/mlproject/mlruns/0/0c1b3dc67de141db8146ba1f9a785000/artifacts
+end_time: 1718990107826
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0c1b3dc67de141db8146ba1f9a785000
+run_name: funny-ape-16
+run_uuid: 0c1b3dc67de141db8146ba1f9a785000
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1718990105995
+status: 3
+tags: []
+user_id: amitbaghel
