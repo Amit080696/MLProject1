@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/Learning/mlproject/mlruns/0/cac6efeef23e4123895cec5b49412bbf/artifacts
+end_time: 1719593674856
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cac6efeef23e4123895cec5b49412bbf
+run_name: unruly-fox-455
+run_uuid: cac6efeef23e4123895cec5b49412bbf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719593674851
+status: 4
+tags: []
+user_id: amitbaghel

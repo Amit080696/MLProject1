@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/Learning/mlproject/mlruns/0/882e5f965cc842dc9b6092e808064096/artifacts
+end_time: 1719594362786
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 882e5f965cc842dc9b6092e808064096
+run_name: merciful-boar-217
+run_uuid: 882e5f965cc842dc9b6092e808064096
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719594360906
+status: 3
+tags: []
+user_id: amitbaghel

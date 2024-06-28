@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 import mlflow
 import mlflow.sklearn
 import numpy as np
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from catboost import CatBoostRegressor
 from sklearn.ensemble import (
     AdaBoostRegressor,
@@ -13,8 +13,6 @@ from sklearn.ensemble import (
     RandomForestRegressor,
 )
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score
-from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 
@@ -29,6 +27,12 @@ class ModelTrainingConfig:
 class ModelTrainer:
     def __init__(self):
         self.model_trainer_config = ModelTrainingConfig()
+    
+    def eval_metrics(self, y_true, y_pred):
+        rmse = mean_squared_error(y_true, y_pred, squared=False)
+        mae = mean_absolute_error(y_true, y_pred)
+        r2 = r2_score(y_true, y_pred)
+        return rmse, mae, r2
     
     def initiate_model_trainer(self, train_array, test_array):
         try:
@@ -77,12 +81,35 @@ class ModelTrainer:
 
             model_report: dict = evaluate_models(X_train, y_train, X_test, y_test, models, params)
 
-            # to get the best model score from dict
+            # Get the best model score from dict
             best_model_score = max(model_report.values())
 
-            # to get best model name from dict
+            # Get the best model name from dict
             best_model_name = list(model_report.keys())[list(model_report.values()).index(best_model_score)]
             best_model = models[best_model_name]
+
+            print("This is the best model:")
+            print(best_model_name)
+
+            best_params = params[best_model_name]
+            
+            mlflow.set_registry_uri("https://dagshub.com/Amit080696/MLProject1.mlflow")
+            tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
+
+            # MLflow
+            with mlflow.start_run():
+                predicted_qualities = best_model.predict(X_test)
+                (rmse, mae, r2) = self.eval_metrics(y_test, predicted_qualities)
+
+                mlflow.log_params(best_params)
+                mlflow.log_metric("rmse", rmse)
+                mlflow.log_metric("r2", r2)
+                mlflow.log_metric("mae", mae)
+
+                if tracking_url_type_store != "file":
+                    mlflow.sklearn.log_model(best_model, "model", registered_model_name=best_model_name)
+                else:
+                    mlflow.sklearn.log_model(best_model, "model")
 
             if best_model_score < 0.6:
                 raise CustomException("No best model found")
@@ -95,7 +122,6 @@ class ModelTrainer:
             )
 
             predicted = best_model.predict(X_test)
-
             r2_square = r2_score(y_test, predicted)
             return r2_square
 

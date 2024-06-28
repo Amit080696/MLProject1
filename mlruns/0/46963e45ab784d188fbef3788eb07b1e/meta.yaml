@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/Learning/mlproject/mlruns/0/46963e45ab784d188fbef3788eb07b1e/artifacts
+end_time: 1719594093354
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 46963e45ab784d188fbef3788eb07b1e
+run_name: abundant-goat-670
+run_uuid: 46963e45ab784d188fbef3788eb07b1e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719594093347
+status: 4
+tags: []
+user_id: amitbaghel
